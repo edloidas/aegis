@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="aegis">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Aegis corp.</title>
+
+        <link rel="shortcut icon" href="favicon.png" type="image/png">
+
+        <meta name="description" content="Aegis interplanetary corporation.">
+        <meta name="author" content="edloidas@gmail.com">
+
+        <!-- Styles -->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+
+        <!-- Angular -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+        <script src="js/Controllers.js"></script>
+
+    </head>
+
+    <body ng-controller="AegisController">
+        <div id="enter">
+            <div class="title">
+                <div class="main">{{title.main}}<a class="index" href="#">{{title.index}}</a></div>
+            </div>
+            <div id="form" class="{{active}}">
+                <input type="text" id="fingerprint">
+                <div class="triangle left" ng-click="activate()"></div>
+                <div class="triangle right" ng-click="activate()"></div>
+            </div>
+        </div>
+    </body>
+</html>

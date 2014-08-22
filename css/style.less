@@ -1,0 +1,200 @@
+/**
+ * AEGIS
+ * @author edloidas
+ * @link http://edloidas.github.io/aegis
+ */
+
+// --------- BACKGROUND ---------
+@bg-body-gradient1: #fff;
+@bg-body-gradient2: #ccc;
+
+@bg-triangle-left:  #666;
+@bg-triangle-right: #e00;
+
+// --------- FONT ---------------
+@font-color: #333;
+
+@font-size: 18px;
+
+// --------- CLASSES ------------
+.noselect(@select: none) {
+    -webkit-touch-callout: @select;
+    -webkit-user-select:   @select;
+    -khtml-user-select:    @select;
+    -moz-user-select:      @select;
+    -ms-user-select:       @select;
+    user-select:           @select;
+}
+
+.box-sizing(@sizing: border-box) {
+    -webkit-box-sizing:    @sizing;
+    -moz-box-sizing:       @sizing;
+    box-sizing:            @sizing;
+}
+
+// --------- FONTS --------------
+@font-face {
+    font-family: "SourceSansPro";
+    src: url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic) format("truetype");
+}
+
+@font-face {
+    font-family: "DroidSerif";
+    src: url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700) format("truetype");
+}
+
+@font-face {
+    font-family: "Oswald";
+    src: url(http://fonts.googleapis.com/css?family=Oswald) format("truetype");
+}
+
+.font-sans {
+    font-family: "SourceSansPro", Arial, Helvetica, sans-serif;
+}
+
+.font-sans2() {
+    font-family: "Oswald", Impact, Charcoal, sans-serif;
+}
+
+.font-serif() {
+    font-family: "DroidSerif", Georgia, serif;
+}
+
+// --------- GLOBALS ------------
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    background: @bg-body-gradient1 radial-gradient(@bg-body-gradient1, @bg-body-gradient2);
+    color: @font-color;
+    font-size: @font-size;
+    cursor: default;
+    .noselect;
+}
+
+#enter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 480px;
+    margin: -240px 0 0 -400px;
+    overflow: hidden;
+}
+
+.title {
+
+    .main {
+        font-size: 8em;
+        text-align: center;
+        text-shadow: 0px 1px 1px @font-color + #333;
+    }
+
+    .index {
+        display: inline-block;
+        position: absolute;
+        padding: 24px 0 0 5px;
+        font-size: 0.25em;
+        color: @font-color;
+        text-decoration: none;
+    }
+
+    .font-serif();
+}
+
+#form {
+    position: absolute;
+    left: 50%;
+    width: 172px;
+    margin: 80px 0 0 -86px;
+    cursor: pointer;
+
+    .triangle {
+        top: 0px;
+        width: 0;
+        height: 0;
+        border-left: 56px solid transparent;
+        border-right: 56px solid transparent;
+        position: absolute;
+    }
+
+    .left {
+        left: 0;
+        border-bottom: 100px solid @bg-triangle-left;
+    }
+
+    .right {
+        right: 0;
+        border-top: 100px solid @bg-triangle-right;
+    }
+
+    &.active {
+        width: 572px;
+        margin: 80px 0 0 -286px;
+        .eff-activate();
+
+        #fingerprint {
+            opacity: 1.0;
+            width: 460px;
+            padding: 0 56px;
+            font-size: 4em;
+            text-align: center;
+            background: #fff;
+            .eff-activate("fingerprint-activate");
+        }
+
+        .triangle {
+            .eff-activate("triangle-activate");
+        }
+    }
+}
+
+#fingerprint {
+    display: block;
+    width: 60px;
+    height: 100px;
+    margin: auto;
+    background: transparent;
+    border: 1px solid @bg-triangle-left;
+    border-bottom: 1px solid @bg-triangle-right;
+    border-right:  1px solid @bg-triangle-right;
+    outline: none;
+    opacity: 0;
+    .box-sizing();
+}
+
+
+// --------- EFFECTS ------------
+.form-activate-src() {
+    0%   {width: 172px; margin: 80px 0 0 -86px;}
+    50%  {width: 172px; margin: 80px 0 0 -86px;}
+    100% {width: 572px; margin: 80px 0 0 -286px;}
+}
+@keyframes         activate { .form-activate-src; }
+@-webkit-keyframes activate { .form-activate-src; }
+
+.fingerprint-activate-src() {
+    0%   {width: 60px;  opacity: 0.0}
+    50%  {width: 60px;  opacity: 0.0}
+    100% {width: 460px; opacity: 1.0}
+}
+@keyframes         fingerprint-activate { .fingerprint-activate-src; }
+@-webkit-keyframes fingerprint-activate { .fingerprint-activate-src; }
+
+.triangle-activate-src() {
+    15%  {opacity: 0.6}
+    30%  {opacity: 1.0}
+    45%  {opacity: 0.7}
+    60%  {opacity: 1.0}
+}
+@keyframes         triangle-activate { .triangle-activate-src; }
+@-webkit-keyframes triangle-activate { .triangle-activate-src; }
+
+.eff-activate(@anim-name: activate, @anim-data: linear 500ms 1 alternate) {
+    animation:         @anim-name @anim-data;
+    -webkit-animation: @anim-name @anim-data;
+}
