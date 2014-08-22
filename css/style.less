@@ -32,6 +32,11 @@
     box-sizing:            @sizing;
 }
 
+.transition(@value: 1s) {
+    -webkit-transition: @value;
+    transition: @value;
+}
+
 // --------- FONTS --------------
 @font-face {
     font-family: "SourceSansPro";
@@ -112,6 +117,7 @@ body {
     width: 172px;
     margin: 80px 0 0 -86px;
     cursor: pointer;
+    .transition(300ms);
 
     .triangle {
         top: 0px;
@@ -143,7 +149,7 @@ body {
             padding: 0 56px;
             font-size: 4em;
             text-align: center;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.5);
             .eff-activate("fingerprint-activate");
         }
 
@@ -162,9 +168,11 @@ body {
     border: 1px solid @bg-triangle-left;
     border-bottom: 1px solid @bg-triangle-right;
     border-right:  1px solid @bg-triangle-right;
+    color: @font-color;
     outline: none;
     opacity: 0;
     .box-sizing();
+    .transition(300ms);
 }
 
 
