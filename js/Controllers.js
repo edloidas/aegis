@@ -13,6 +13,8 @@ aegis.controller( 'AegisController', function ( $scope, $http ) {
         index: "corp."
     };
 
+    $scope.fingerprint = "enter id";
+
     $scope.active = "";
 
     $scope.activate = function () {
