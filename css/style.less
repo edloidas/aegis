@@ -141,20 +141,13 @@ body {
     &.active {
         width: 572px;
         margin: 80px 0 0 -286px;
-        .eff-activate();
 
         #fingerprint {
             opacity: 1.0;
             width: 460px;
             padding: 0 56px;
             font-size: 4em;
-            text-align: center;
             background: rgba(255, 255, 255, 0.5);
-            .eff-activate("fingerprint-activate");
-        }
-
-        .triangle {
-            .eff-activate("triangle-activate");
         }
     }
 }
@@ -167,42 +160,12 @@ body {
     background: transparent;
     border: 1px solid @bg-triangle-left;
     border-bottom: 1px solid @bg-triangle-right;
-    border-right:  1px solid @bg-triangle-right;
+    border-right:  1px solid transparent;
+    border-left:   1px solid transparent;
+    text-align: center;
     color: @font-color;
     outline: none;
     opacity: 0;
     .box-sizing();
     .transition(300ms);
-}
-
-
-// --------- EFFECTS ------------
-.form-activate-src() {
-    0%   {width: 172px; margin: 80px 0 0 -86px;}
-    50%  {width: 172px; margin: 80px 0 0 -86px;}
-    100% {width: 572px; margin: 80px 0 0 -286px;}
-}
-@keyframes         activate { .form-activate-src; }
-@-webkit-keyframes activate { .form-activate-src; }
-
-.fingerprint-activate-src() {
-    0%   {width: 60px;  opacity: 0.0}
-    50%  {width: 60px;  opacity: 0.0}
-    100% {width: 460px; opacity: 1.0}
-}
-@keyframes         fingerprint-activate { .fingerprint-activate-src; }
-@-webkit-keyframes fingerprint-activate { .fingerprint-activate-src; }
-
-.triangle-activate-src() {
-    15%  {opacity: 0.6}
-    30%  {opacity: 1.0}
-    45%  {opacity: 0.7}
-    60%  {opacity: 1.0}
-}
-@keyframes         triangle-activate { .triangle-activate-src; }
-@-webkit-keyframes triangle-activate { .triangle-activate-src; }
-
-.eff-activate(@anim-name: activate, @anim-data: linear 500ms 1 alternate) {
-    animation:         @anim-name @anim-data;
-    -webkit-animation: @anim-name @anim-data;
 }
