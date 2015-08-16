@@ -77,9 +77,9 @@ body {
 
     overflow: hidden;
 
-    width: 800px;
+    width: 600px;
     height: 360px;
-    margin: -200px 0 0 -400px;
+    margin: -200px 0 0 -300px;
 }
 
 .title {
@@ -152,8 +152,6 @@ body {
 
             opacity: 1.0;
             background: rgba(255, 255, 255, 0.5);
-
-            font-size: 4em;
         }
     }
 }
@@ -176,6 +174,60 @@ body {
     outline: none;
     background: transparent;
 
+    font-size: 4em;
+
     .box-sizing();
     .transition(300ms);
+}
+
+/*
+ * Fixes for the small screens.
+ */
+@media screen and ( max-width: 600px ) {
+    #enter {
+        width: 300px;
+        height: 200px;
+        margin: -100px 0 0 -150px;
+    }
+
+    #form {
+        width: 86px;
+        margin-left: -43px;
+
+        .triangle {
+            border-right: 28px solid transparent;
+            border-left: 28px solid transparent;
+        }
+
+        .left {
+            border-bottom: 50px solid @bg-triangle-left;
+        }
+
+        .right {
+            border-top: 50px solid @bg-triangle-right;
+        }
+
+        &.active {
+            width: 286px;
+            margin-left: -143px;
+
+            #fingerprint {
+                width: 230px;
+                padding: 0 28px;
+            }
+        }
+    }
+
+    #fingerprint {
+        width: 32px;
+        height: 50px;
+
+        font-size: 2em;
+    }
+
+    .title {
+        .main {
+            font-size: 4em;
+        }
+    }
 }
