@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html ng-app="aegis">
+<html>
     <head>
         <meta charset="utf-8">
+        <meta name=viewport content="width=device-width, initial-scale=1">
 
         <title>Aegis corp.</title>
 
@@ -10,25 +11,21 @@
         <meta name="description" content="Aegis interplanetary corporation.">
         <meta name="author" content="edloidas@gmail.com">
 
-        <!-- Styles -->
         <link rel="stylesheet" type="text/css" href="css/style.css">
-
-        <!-- Angular -->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
-        <script src="js/Controllers.js"></script>
-
     </head>
 
-    <body ng-controller="AegisController">
+    <body>
         <div id="enter">
             <div class="title">
-                <div class="main">{{title.main}}<a class="index" href="#">{{title.index}}</a></div>
+                <div class="main">AegiS<a class="index" href="#">corp.</a></div>
             </div>
-            <div id="form" class="{{active}}">
-                <input type="text" placeholder="{{fingerprint}}" id="fingerprint">
-                <div class="triangle left" ng-click="activate()"></div>
-                <div class="triangle right" ng-click="activate()"></div>
+            <div id="form">
+                <input type="text" placeholder="enter id" id="fingerprint">
+                <div class="triangle left"></div>
+                <div class="triangle right"></div>
             </div>
         </div>
+
+        <script src="js/init.js"></script>
     </body>
 </html>

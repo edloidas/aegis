@@ -1,15 +1,18 @@
+// out: style.css, sourcemap: false, compress: true
 /**
  * AEGIS
  * @author edloidas
  * @link http://edloidas.github.io/aegis
  */
 
+ @import url( https://fonts.googleapis.com/css?family=Source+Sans+Pro:200|Lora );
+
 // --------- BACKGROUND ---------
-@bg-body-gradient1: #fff;
-@bg-body-gradient2: #ccc;
+@bg-body-gradient1: #FFF;
+@bg-body-gradient2: #CCC;
 
 @bg-triangle-left:  #666;
-@bg-triangle-right: #e00;
+@bg-triangle-right: #E00;
 
 // --------- FONT ---------------
 @font-color: #333;
@@ -18,12 +21,13 @@
 
 // --------- CLASSES ------------
 .noselect(@select: none) {
-    -webkit-touch-callout: @select;
     -webkit-user-select:   @select;
-    -khtml-user-select:    @select;
     -moz-user-select:      @select;
     -ms-user-select:       @select;
     user-select:           @select;
+
+    -webkit-touch-callout: @select;
+    -khtml-user-select:    @select;
 }
 
 .box-sizing(@sizing: border-box) {
@@ -38,31 +42,12 @@
 }
 
 // --------- FONTS --------------
-@font-face {
-    font-family: "SourceSansPro";
-    src: url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic) format("truetype");
-}
-
-@font-face {
-    font-family: "DroidSerif";
-    src: url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700) format("truetype");
-}
-
-@font-face {
-    font-family: "Oswald";
-    src: url(http://fonts.googleapis.com/css?family=Oswald) format("truetype");
-}
-
 .font-sans {
-    font-family: "SourceSansPro", Arial, Helvetica, sans-serif;
-}
-
-.font-sans2() {
-    font-family: "Oswald", Impact, Charcoal, sans-serif;
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
 }
 
 .font-serif() {
-    font-family: "DroidSerif", Georgia, serif;
+    font-family: "Lora", Georgia, serif;
 }
 
 // --------- GLOBALS ------------
@@ -74,10 +59,14 @@ html {
 
 body {
     margin: 0;
-    background: @bg-body-gradient1 radial-gradient(@bg-body-gradient1, @bg-body-gradient2);
-    color: @font-color;
-    font-size: @font-size;
+
     cursor: default;
+
+    color: @font-color;
+    background: @bg-body-gradient1 radial-gradient(@bg-body-gradient1, @bg-body-gradient2);
+
+    font-size: @font-size;
+
     .noselect;
 }
 
@@ -85,87 +74,108 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 800px;
-    height: 480px;
-    margin: -240px 0 0 -400px;
+
     overflow: hidden;
+
+    width: 800px;
+    height: 360px;
+    margin: -200px 0 0 -400px;
 }
 
 .title {
+    .font-serif();
 
     .main {
-        font-size: 8em;
         text-align: center;
+
         text-shadow: 0px 1px 1px @font-color + #333;
+
+        font-size: 8em;
     }
 
     .index {
-        display: inline-block;
         position: absolute;
-        margin: 24px 0 0 5px;
-        font-size: 0.25em;
-        color: @font-color;
-        text-decoration: none;
-    }
 
-    .font-serif();
+        display: inline-block;
+
+        margin: 17px 0 0 5px;
+
+        text-decoration: none;
+
+        color: @font-color;
+
+        font-size: 0.25em;
+    }
 }
 
 #form {
     position: absolute;
     left: 50%;
+
     width: 172px;
-    margin: 80px 0 0 -86px;
+    margin: 50px 0 0 -86px;
+
     cursor: pointer;
+
     .transition(300ms);
 
     .triangle {
+        position: absolute;
         top: 0px;
+
         width: 0;
         height: 0;
-        border-left: 56px solid transparent;
+
         border-right: 56px solid transparent;
-        position: absolute;
+        border-left: 56px solid transparent;
     }
 
     .left {
         left: 0;
+
         border-bottom: 100px solid @bg-triangle-left;
     }
 
     .right {
         right: 0;
+
         border-top: 100px solid @bg-triangle-right;
     }
 
     &.active {
         width: 572px;
-        margin: 80px 0 0 -286px;
+        margin-left: -286px;
 
         #fingerprint {
-            opacity: 1.0;
             width: 460px;
             padding: 0 56px;
-            font-size: 4em;
+
+            opacity: 1.0;
             background: rgba(255, 255, 255, 0.5);
+
+            font-size: 4em;
         }
     }
 }
 
 #fingerprint {
     display: block;
+
     width: 60px;
     height: 100px;
     margin: auto;
-    background: transparent;
-    border: 1px solid @bg-triangle-left;
-    border-bottom: 1px solid @bg-triangle-right;
-    border-right:  1px solid transparent;
-    border-left:   1px solid transparent;
+
     text-align: center;
-    color: @font-color;
-    outline: none;
+
     opacity: 0;
+    color: @font-color;
+    border: 1px solid @bg-triangle-left;
+    border-right:  1px solid transparent;
+    border-bottom: 1px solid @bg-triangle-right;
+    border-left:   1px solid transparent;
+    outline: none;
+    background: transparent;
+
     .box-sizing();
     .transition(300ms);
 }
